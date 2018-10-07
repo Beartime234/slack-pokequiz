@@ -1,0 +1,14 @@
+{
+    "EventsApiLambdaFunction": {
+      "SECRETS_NAME": "pokequiz-secrets",
+      "STAGE": "local-dev",
+      "QUIZ_QUESTION_TABLE": "dev-quiz-questions",
+      "QUIZ_LEADERBOARD_TABLE": "dev-quiz-leaderboard"
+    },
+    "InteractiveApiLambdaFunction": {
+      "SECRETS_NAME": "pokequiz-secrets",
+      "STAGE": "local-dev",
+      "QUIZ_QUESTION_TABLE": "dev-quiz-questions",
+      "QUIZ_LEADERBOARD_TABLE": "dev-quiz-leaderboard"
+    }
+}

@@ -1,0 +1,2 @@
+from .quiz_question_table import QuizQuestionTable
+from .leaderboard_table import LeaderboardTable

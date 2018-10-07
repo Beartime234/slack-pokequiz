@@ -1,0 +1,3 @@
+
+class FailedSlackApiCall(Exception):
+    pass
