@@ -8,13 +8,16 @@ import time
 import os
 import boto3
 import json
-import logging
+import logging.config
 import yaml
 
 __version__ = "0.1"
 
+
+dir_path = os.path.dirname(os.path.realpath(__file__))
+
 # Read the logging configuration and set it
-with open("quiz_config/logging.yml", "rt") as f:
+with open(f"{dir_path}/quiz_config/logging.yml", "rt") as f:
     config = yaml.safe_load(f.read())
     f.close()
 

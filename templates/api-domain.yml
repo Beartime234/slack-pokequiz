@@ -1,0 +1,62 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: |
+  Deploys a custom domain for a API
+
+Parameters:
+  ServiceName:
+    Description: The name of the service that you are deploying
+    Type: String
+    Default: SlackBot
+  Stage:
+    Description: The Stage/Environment you are building in.
+    Type: String
+    Default: dev
+    AllowedValues:
+    - local-dev
+    - dev
+    - test
+    - prod
+  ApiDomain:
+    Description: The domain
+    Type: String
+    Default: pokequiz.xyz
+  ApiDomainCertificate:
+    Description: The certificate arn for the domain that are you using
+    Type: String
+
+Resources:
+  ApiGatewayCustomDomainName:
+    Type: AWS::ApiGateway::DomainName
+    Properties:
+      DomainName:
+        Fn::Sub: api.${ApiDomain}
+      EndpointConfiguration:
+        Types:
+        - REGIONAL
+      RegionalCertificateArn:
+        Ref: ApiDomainCertificate
+  ApiGatewayCustomDomainMapping:
+    Type: AWS::ApiGateway::BasePathMapping
+    DependsOn:
+    - ApiGatewayCustomDomainName
+    Properties:
+      BasePath: "v1"
+      DomainName:
+        Fn::Sub: api.${ApiDomain}
+      RestApiId:
+        Fn::ImportValue:
+          Fn::Sub: ${Stage}-${ServiceName}-api
+      Stage:
+        Fn::Sub: ${Stage}
+  CustomDomainRecord:
+    Type: AWS::Route53::RecordSet
+    Properties:
+      Type: CNAME
+      HostedZoneName:
+        Fn::Sub: ${ApiDomain}.
+      Name:
+        Fn::Sub:
+          api.${ApiDomain}
+      ResourceRecords:
+        - Fn::Sub: ${ApiGatewayCustomDomainName.RegionalDomainName}
+      TTL: 300

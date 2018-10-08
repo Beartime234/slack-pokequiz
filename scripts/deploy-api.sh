@@ -18,10 +18,14 @@ BUCKET="${ACCOUNT_ID}-${REGION}-lambda-code-storage"  # An S3 bucket that can st
 SECRETS_NAME="pokequiz-secrets"  # The name of the secret in secrets manager that stores
 SERVICE="pokequiz"  # The name of the service e.g. MySuperCoolSlackApp
 API_STACK_NAME="${STAGE}-${SERVICE}-api"  # The name of the stack. You could just but ${SERVICE} here
+API_DOMAIN_STACK_NAME="${STAGE}-${SERVICE}-api-domain"
+API_DOMAIN="pokequiz.xyz"
+API_DOMAIN_CERTIFICATE="arn:aws:acm:us-east-1:934679804324:certificate/f16c6d3b-04a1-4c81-b94b-de0f6fc3f12c"
 
 # File Pathing
 TEMPLATE_FOLDER="templates"  # The folder which your template lives in
 API_TEMPLATE_FILE="api.yml"  # the file that in your template folder it lives in
+API_DOMAIN_TEMPLATE_FILE="api-domain.yml"
 DIST_FOLDER="dist"  # A folder that the distribution files live in. Just leave this
 SAM_DIST_FOLDER="sam-build"
 
@@ -53,7 +57,19 @@ aws cloudformation deploy  \
     --template-file ${DIST_FOLDER}/${SAM_DIST_FOLDER}/${STAGE}-packaged-template.yml \
     --stack-name ${API_STACK_NAME} \
     --capabilities CAPABILITY_NAMED_IAM \
-    --parameter-override Stage=${STAGE} SecretsName=${SECRETS_NAME} ServiceName=${SERVICE} || true
+    --parameter-override Stage=${STAGE} SecretsName=${SECRETS_NAME} ServiceName=${SERVICE} \
+     ApiDomain=${API_DOMAIN} ApiDomainCertificate=${API_DOMAIN_CERTIFICATE} || true
+
+if [ ${STAGE} = "prod" ]; then
+    echo "Adding Custom Domain"
+    aws cloudformation deploy  \
+    --region ${REGION} \
+    --template-file ${TEMPLATE_FOLDER}/${API_DOMAIN_TEMPLATE_FILE} \
+    --stack-name ${API_DOMAIN_STACK_NAME} \
+    --capabilities CAPABILITY_NAMED_IAM \
+    --parameter-override Stage=${STAGE} ServiceName=${SERVICE} \
+     ApiDomain=${API_DOMAIN} ApiDomainCertificate=${API_DOMAIN_CERTIFICATE} || true
+fi
 
 echo "CloudFormation outputs..."
 aws cloudformation describe-stacks \

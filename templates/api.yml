@@ -35,14 +35,13 @@ Globals:
         QUIZ_QUESTION_TABLE:
           Fn::ImportValue:
             Fn::Sub:
-              ${Stage}-quiz-questions
+              ${Stage}-quizdata-questions
         QUIZ_LEADERBOARD_TABLE:
           Fn::ImportValue:
             Fn::Sub:
-              ${Stage}-quiz-leaderboard
+              ${Stage}-quizdata-leaderboard
   Api:
     EndpointConfiguration: REGIONAL
-
 
 Resources:
   # Because stages are just not designed well we deploy a new API per stage
@@ -120,12 +119,12 @@ Resources:
             TableName:
               Fn::ImportValue:
                 Fn::Sub:
-                  ${Stage}-quiz-questions
+                  ${Stage}-quizdata-questions
         - DynamoDBCrudPolicy:
             TableName:
               Fn::ImportValue:
                 Fn::Sub:
-                  ${Stage}-quiz-leaderboard
+                  ${Stage}-quizdata-leaderboard
       FunctionName:
         Fn::Sub: ${Stage}-${ServiceName}-eventsfunction
       Events:
@@ -149,12 +148,12 @@ Resources:
           TableName:
             Fn::ImportValue:
               Fn::Sub:
-                ${Stage}-quiz-questions
+                ${Stage}-quizdata-questions
       - DynamoDBCrudPolicy:
           TableName:
             Fn::ImportValue:
               Fn::Sub:
-                ${Stage}-quiz-leaderboard
+                ${Stage}-quizdata-leaderboard
       FunctionName:
         Fn::Sub: ${Stage}-${ServiceName}-interactivefunction
       Events:
@@ -206,3 +205,10 @@ Outputs:
       - '.amazonaws.com/'
       - Ref: Stage
       - '/slack/interactive'
+  ApiId:
+    Description: The API Id
+    Value:
+      Ref: ApiGatewayApi
+    Export:
+      Name:
+        Fn::Sub: ${Stage}-${ServiceName}-api
