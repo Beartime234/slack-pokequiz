@@ -40,6 +40,8 @@ Globals:
           Fn::ImportValue:
             Fn::Sub:
               ${Stage}-quizdata-leaderboard
+        QUIZ_ID:
+          Ref: ServiceName
   Api:
     EndpointConfiguration: REGIONAL
 

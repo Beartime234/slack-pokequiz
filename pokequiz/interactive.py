@@ -9,7 +9,7 @@ from slackclient import SlackClient
 from urllib.parse import parse_qs
 
 # Local imports
-from pokequiz import helpers, messaging, SECRETS
+from pokequiz import helpers, messaging, SECRETS, QUIZ_ID
 
 # Import the quiz
 from pokequiz.quiz import Quiz
@@ -57,7 +57,7 @@ def lambda_handler(api_event, api_context):
     callback_id = slack_payload_dict["callback_id"]
 
     # Create the quiz object
-    quiz = Quiz("pokequiz", team_id)
+    quiz = Quiz(QUIZ_ID, team_id)
 
     # If the user interacted with the play_again action
     if callback_id == "play_again":

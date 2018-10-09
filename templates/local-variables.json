@@ -3,12 +3,14 @@
       "SECRETS_NAME": "pokequiz-secrets",
       "STAGE": "local-dev",
       "QUIZ_QUESTION_TABLE": "dev-quiz-questions",
-      "QUIZ_LEADERBOARD_TABLE": "dev-quiz-leaderboard"
+      "QUIZ_LEADERBOARD_TABLE": "dev-quiz-leaderboard",
+      "QUIZ_ID": "pokequiz"
     },
     "InteractiveApiLambdaFunction": {
       "SECRETS_NAME": "pokequiz-secrets",
       "STAGE": "local-dev",
       "QUIZ_QUESTION_TABLE": "dev-quiz-questions",
-      "QUIZ_LEADERBOARD_TABLE": "dev-quiz-leaderboard"
+      "QUIZ_LEADERBOARD_TABLE": "dev-quiz-leaderboard",
+      "QUIZ_ID": "pokequiz"
     }
 }

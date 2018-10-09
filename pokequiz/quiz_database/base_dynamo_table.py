@@ -1,6 +1,8 @@
 from boto3 import Session
 from boto3.dynamodb.conditions import Key
+from botocore.exceptions import ClientError
 import logging
+from sys import exit
 
 from pokequiz.quiz_database.exceptions import CouldNotFindValue
 

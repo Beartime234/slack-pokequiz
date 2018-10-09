@@ -14,6 +14,7 @@ export QUIZ_QUESTION_TABLE="dev-quiz-questions"  # The name of secrets
 export QUIZ_LEADERBOARD_TABLE="dev-quiz-leaderboard"
 export AWS_PROFILE=${AWS_PROFILE}
 export AWS_DEFAULT_REGION=${REGION}
+export QUIZ_ID="pokequiz"
 
 echo "Running Tests"
 pipenv run python -m pytest tests/ -v

@@ -13,7 +13,7 @@ import yaml
 
 __version__ = "0.1"
 
-
+# Gets the real path of this location just so we can
 dir_path = os.path.dirname(os.path.realpath(__file__))
 
 # Read the logging configuration and set it
@@ -27,6 +27,7 @@ logger = logging.getLogger(__name__)
 # Ignore non important logs from botocore and boto3 cause they noisy as hell
 logging.getLogger('botocore').setLevel(logging.CRITICAL)
 logging.getLogger('boto3').setLevel(logging.CRITICAL)
+logging.getLogger('urllib3').setLevel(logging.CRITICAL)
 
 logger.info(f"Starting up Quiz v{__version__}")
 logger.debug("Starting initialization. Loading secrets and environment variables.")
@@ -34,6 +35,9 @@ logger.debug("Starting initialization. Loading secrets and environment variables
 # Get Environment Variables
 # This is declared globally because as this is useful for all parts of the function
 start_time = time.time()
+
+QUIZ_ID = os.environ["QUIZ_ID"]
+
 # Grab secrets for the application.
 SECRETS_NAME = os.environ["SECRETS_NAME"]
 
@@ -70,4 +74,4 @@ logger.debug(f"Loaded table variables successfully."
              f" Questions: {QUIZ_QUESTION_TABLE}, Leaderboard: {QUIZ_LEADERBOARD_TABLE}")
 
 logger.info("Startup Time: --- %s seconds ---" % (time.time() - start_time))
-logger.info("Initialization Successful")
+logger.debug("Initialization Successful")

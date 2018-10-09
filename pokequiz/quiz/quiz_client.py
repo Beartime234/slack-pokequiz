@@ -218,7 +218,7 @@ class Quiz(object):
             # Split the message field
             message_field = field_value.split(" ")
             # Join everything except the first one as it will be the *1:*
-            answer = "".join(message_field[1:])
+            answer = " ".join(message_field[1:])
             if answer == correct_answer:
                 new_fields.append(helpers.form_answered_question_field(self.emojis["tick"], answer))
             else:

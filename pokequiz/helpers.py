@@ -13,7 +13,7 @@ logger = logging.getLogger(__name__)
 SLACK_URL = "https://slack.com/api/chat.postMessage"
 
 
-def form_response(status_code: int, body: dict=None):
+def form_response(status_code: int, body: dict = None):
     """Generates a JSON response
 
     Args:
@@ -107,7 +107,7 @@ def verify_request(request_headers: dict, slack_event_body: str, app_signing_sec
     if STAGE != "prod":
         logger.debug(f"We are not in production. So we aren't going to verify the request.")
         return True
-    logger.debug(f"We are in production. So we are going to verify the request.")
+    logger.debug(f"Verifying request from slack.")
     slack_signature = request_headers["X-Slack-Signature"]
     slack_timestamp = request_headers["X-Slack-Request-Timestamp"]
     # Is the request older then 5 minutes
