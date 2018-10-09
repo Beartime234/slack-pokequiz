@@ -23,7 +23,7 @@ def form_slack_action(name: str, text: str, value: str, action_type="button", st
         text: Text of the action
         value: Value of the action
         action_type: action type e.g. button [Default: button]
-        style: style of the action [Default: button]
+        style: style of the action [Default: default]
     """
     return {"name": name, "text": text, "type": action_type, "value": value, "style": style}
 
