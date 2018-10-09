@@ -73,5 +73,5 @@ QUIZ_LEADERBOARD_TABLE = os.environ["QUIZ_LEADERBOARD_TABLE"]
 logger.debug(f"Loaded table variables successfully."
              f" Questions: {QUIZ_QUESTION_TABLE}, Leaderboard: {QUIZ_LEADERBOARD_TABLE}")
 
-logger.info("Startup Time: --- %s seconds ---" % (time.time() - start_time))
+logger.debug("Startup Time: --- %s seconds ---" % (time.time() - start_time))
 logger.debug("Initialization Successful")

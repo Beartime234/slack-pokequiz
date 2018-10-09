@@ -1,9 +1,9 @@
 import json
 import pytest
-import events
+from pokequiz import events
 
 
-def apigw_slack_base_event():
+def apigw_slack_json_base_event():
     """ Generates a fake slack challenge event.
 
     This is the base event and has no body. So you should add
@@ -59,12 +59,12 @@ def apigw_slack_base_event():
 def apigw_slack_challenge_event():
     """Forms a basic slack challenge event.
     """
-    slack_challenge_event = apigw_slack_base_event()
+    slack_challenge_event = apigw_slack_json_base_event()
     slack_challenge_event["body"] = '{"token":"<OBSFUCATED>","challenge":"somerandomdigits","type":"url_verification"}'
     return slack_challenge_event
 
 
-def test_lambda_handler(apigw_slack_challenge_event):
+def test_events_lambda_handler(apigw_slack_challenge_event):
     ret = events.lambda_handler(apigw_slack_challenge_event, "")
     assert ret['statusCode'] == 200
 

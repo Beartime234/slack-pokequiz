@@ -17,4 +17,4 @@ export AWS_DEFAULT_REGION=${REGION}
 export QUIZ_ID="pokequiz"
 
 echo "Running Tests"
-pipenv run python -m pytest tests/ -v
+pipenv run python -m pytest tests/ -vv
