@@ -51,7 +51,7 @@ class Quiz(object):
     def __init__(self, quiz_id, team_id):
         boto_session = boto3.Session()
 
-        logger.debug("INITIALIZING QUIZ")
+        logger.debug("Initializing quiz")
 
         self.quiz_question_table = QuizQuestionTable(
             boto_session=boto_session,
