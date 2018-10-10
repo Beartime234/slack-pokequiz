@@ -40,8 +40,6 @@ Globals:
           Ref: ServiceName
   Api:
     EndpointConfiguration: REGIONAL
-    Cors:
-      AllowOrigin: "'slack.com', 'pokequiz.xyz'"
 
 Resources:
   # Because stages are just not designed well we deploy a new API per stage
