@@ -13,10 +13,11 @@ logger = logging.getLogger(__name__)
 SLACK_URL = "https://slack.com/api/chat.postMessage"
 
 
-def form_response(status_code: int, body: dict = None):
+def form_response(status_code: int, body: dict = None, additional_headers: dict=None):
     """Generates a JSON response
 
     Args:
+        additional_headers: Any additionaal headers you wish to add
         status_code (int): A integer of the applicable status code
         body (dict): A dictionary to send as a response.
 
@@ -25,17 +26,22 @@ def form_response(status_code: int, body: dict = None):
     """
 
     # Fixes it for a blank response doesn't update interactive messages
+    if additional_headers is None:
+        additional_headers = {}
+    headers = {
+        "Content-Type": "application/json"
+    }
+    headers.update(additional_headers)
     if body is None:
         return {
             "isBase64Encoded": True,
-            "statusCode": status_code
+            "statusCode": status_code,
+            "headers": headers
         }
     return {
         "isBase64Encoded": True,
         "statusCode": status_code,
-        "headers": {
-            "Content-Type": "application/json"
-        },
+        "headers": headers,
         "body": json.dumps(body)
     }
 

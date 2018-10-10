@@ -44,4 +44,4 @@ def lambda_handler(api_event, api_context):
 
     logger.info("Returning successful response.")
     # Everything went fine return a good response.
-    return helpers.form_response(200, {"message": "Auth Successful"})
+    return helpers.form_response(301, {"message": "Auth Successful"}, additional_headers={"Location": "https://pokequiz.xyz"})
