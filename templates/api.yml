@@ -101,6 +101,25 @@ Resources:
                 '200':
                   description: |
                     Request Received Okay!
+          /slack/oauth:
+            get:
+              summary: |
+                Oauth request URL
+              description:
+                Fn::Sub: |
+                  Slack Oauth request url. This is used to authenticate with the application to allow users to add it to slack.
+              x-amazon-apigateway-integration:
+                type: aws_proxy
+                uri:
+                  Fn::Sub: arn:aws:apigateway:${AWS::Region}:lambda:path/2015-03-31/functions/${OauthApiLambdaFunction.Arn}/invocations
+                httpMethod: POST
+                responses:
+                  default:
+                    statusCode: 200
+              responses:
+                '200':
+                  description: |
+                    Request Received Okay!
       StageName:
         Ref:  Stage
       Variables:
@@ -128,7 +147,7 @@ Resources:
                 Fn::Sub:
                   ${Stage}-quizdata-leaderboard
       FunctionName:
-        Fn::Sub: ${Stage}-${ServiceName}-eventsfunction
+        Fn::Sub: ${Stage}-${ServiceName}-events
       Events:
         Slack:
           Type: Api
@@ -157,7 +176,7 @@ Resources:
               Fn::Sub:
                 ${Stage}-quizdata-leaderboard
       FunctionName:
-        Fn::Sub: ${Stage}-${ServiceName}-interactivefunction
+        Fn::Sub: ${Stage}-${ServiceName}-interactive
       Events:
         Slack:
           Type: Api
@@ -166,6 +185,25 @@ Resources:
               Ref: ApiGatewayApi
             Path: /slack/interactive
             Method: POST
+  OauthApiLambdaFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: ../dist/py-build/
+      Handler: pokequiz.oauth.lambda_handler
+      Policies:
+      - AWSSecretsManagerGetSecretValuePolicy:
+          SecretArn:
+            Fn::Sub: arn:aws:secretsmanager:${AWS::Region}:${AWS::AccountId}:secret:${SecretsName}*
+      FunctionName:
+        Fn::Sub: ${Stage}-${ServiceName}-oauth
+      Events:
+        Slack:
+          Type: Api
+          Properties:
+            RestApiId:
+              Ref: ApiGatewayApi
+            Path: /slack/oauth
+            Method: GET
   ApiLambdaRole:
     Type: "AWS::IAM::Role"
     Properties:
@@ -186,7 +224,7 @@ Resources:
 
 Outputs:
   EventsApiUrl:
-    Description: URL of your API endpoint to put into the interactive slack
+    Description: URL  of your API endpoint to put into the slack events
     Value: !Join
     - ''
     - - https://
@@ -197,7 +235,7 @@ Outputs:
       - Ref: Stage
       - '/slack/events'
   InteractiveApiUrl:
-    Description: URL of your API endpoint to put into the slack events
+    Description: URL of your API endpoint to put into the interactive slack
     Value: !Join
     - ''
     - - https://
@@ -207,6 +245,17 @@ Outputs:
       - '.amazonaws.com/'
       - Ref: Stage
       - '/slack/interactive'
+  OauthApiUrl:
+    Description: URL of your API endpoint to put into the slack events
+    Value: !Join
+    - ''
+    - - https://
+      - Ref: ApiGatewayApi
+      - '.execute-api.'
+      - Ref: 'AWS::Region'
+      - '.amazonaws.com/'
+      - Ref: Stage
+      - '/slack/oauth'
   ApiId:
     Description: The API Id
     Value:

@@ -54,7 +54,6 @@ secret_value = get_secret_value_response["SecretString"]
 # Load them into a dictionary
 SECRETS = json.loads(secret_value)
 
-
 # Check its a dictionary if it's not its probably an error
 if type(SECRETS) is not dict:
     raise TypeError("Secrets must be a well formed dictionary.")

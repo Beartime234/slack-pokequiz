@@ -35,7 +35,7 @@ class BaseDynamoTable(object):
             Limit=1
         )
         if len(get_value_response["Items"]) == 0:
-            raise CouldNotFindValue(f"Could not find question with {range_value}")
+            raise CouldNotFindValue(f"Could not find value with {range_value}")
         return get_value_response["Items"][0]
 
     def put_value(self, value):
