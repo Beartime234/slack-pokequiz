@@ -65,12 +65,10 @@ STAGE = os.environ["STAGE"]
 
 logger.debug(f"Loaded stage successfully. Stage: {STAGE}")
 
-QUIZ_QUESTION_TABLE = os.environ["QUIZ_QUESTION_TABLE"]
-
-QUIZ_LEADERBOARD_TABLE = os.environ["QUIZ_LEADERBOARD_TABLE"]
+QUIZ_STORAGE_TABLE = os.environ["QUIZ_QUESTION_TABLE"]
 
 logger.debug(f"Loaded table variables successfully."
-             f" Questions: {QUIZ_QUESTION_TABLE}, Leaderboard: {QUIZ_LEADERBOARD_TABLE}")
+             f" StorageTable: {QUIZ_STORAGE_TABLE}")
 
 logger.debug("Startup Time: --- %s seconds ---" % (time.time() - start_time))
 logger.debug("Initialization Successful")

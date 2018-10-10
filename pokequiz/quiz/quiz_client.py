@@ -5,7 +5,7 @@ from operator import itemgetter
 
 from pokequiz.quiz import helpers
 from pokequiz.quiz_database import QuizQuestionTable, LeaderboardTable
-from pokequiz import QUIZ_QUESTION_TABLE, QUIZ_LEADERBOARD_TABLE
+from pokequiz import QUIZ_STORAGE_TABLE
 
 logger = logging.getLogger(__name__)
 
@@ -55,18 +55,18 @@ class Quiz(object):
 
         self.quiz_question_table = QuizQuestionTable(
             boto_session=boto_session,
-            table_name=QUIZ_QUESTION_TABLE,
-            quiz_id=quiz_id,
-            primary_key="quizId",
-            range_key="questionRange"
+            table_name=QUIZ_STORAGE_TABLE,
+            quiz_id=f"{quiz_id}-question",
+            primary_key="id",
+            range_key="range"
         )
 
         self.leaderboard_table = LeaderboardTable(
             boto_session=boto_session,
-            table_name=QUIZ_LEADERBOARD_TABLE,
-            quiz_id=quiz_id,
-            primary_key="quizId",
-            range_key="teamRange",
+            table_name=QUIZ_STORAGE_TABLE,
+            quiz_id=f"{quiz_id}-leaderboard",
+            primary_key="id",
+            range_key="range",
             team_id=team_id
         )
 

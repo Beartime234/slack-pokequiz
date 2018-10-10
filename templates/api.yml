@@ -25,21 +25,17 @@ Globals:
   Function:
     Runtime: python3.6
     Timeout: 10
-    MemorySize: 2024
+    MemorySize: 1024
     Environment:
       Variables:
         STAGE:
           Ref: Stage
         SECRETS_NAME:
           Ref: SecretsName
-        QUIZ_QUESTION_TABLE:
+        QUIZ_STORAGE_TABLE:
           Fn::ImportValue:
             Fn::Sub:
-              ${Stage}-quizdata-questions
-        QUIZ_LEADERBOARD_TABLE:
-          Fn::ImportValue:
-            Fn::Sub:
-              ${Stage}-quizdata-leaderboard
+              ${Stage}-quizdata-storage
         QUIZ_ID:
           Ref: ServiceName
   Api:
@@ -140,12 +136,7 @@ Resources:
             TableName:
               Fn::ImportValue:
                 Fn::Sub:
-                  ${Stage}-quizdata-questions
-        - DynamoDBCrudPolicy:
-            TableName:
-              Fn::ImportValue:
-                Fn::Sub:
-                  ${Stage}-quizdata-leaderboard
+                  ${Stage}-quizdata-storage
       FunctionName:
         Fn::Sub: ${Stage}-${ServiceName}-events
       Events:
@@ -169,12 +160,7 @@ Resources:
           TableName:
             Fn::ImportValue:
               Fn::Sub:
-                ${Stage}-quizdata-questions
-      - DynamoDBCrudPolicy:
-          TableName:
-            Fn::ImportValue:
-              Fn::Sub:
-                ${Stage}-quizdata-leaderboard
+                ${Stage}-quizdata-storage
       FunctionName:
         Fn::Sub: ${Stage}-${ServiceName}-interactive
       Events:
@@ -194,6 +180,11 @@ Resources:
       - AWSSecretsManagerGetSecretValuePolicy:
           SecretArn:
             Fn::Sub: arn:aws:secretsmanager:${AWS::Region}:${AWS::AccountId}:secret:${SecretsName}*
+      - DynamoDBCrudPolicy:
+          TableName:
+            Fn::ImportValue:
+              Fn::Sub:
+                ${Stage}-quizdata-storage
       FunctionName:
         Fn::Sub: ${Stage}-${ServiceName}-oauth
       Events:
