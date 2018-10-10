@@ -64,7 +64,7 @@ class Quiz(object):
         self.leaderboard_table = LeaderboardTable(
             boto_session=boto_session,
             table_name=QUIZ_STORAGE_TABLE,
-            quiz_id=f"{quiz_id}-leaderboard",
+            quiz_id=f"{quiz_id}-teaminfo",
             primary_key="id",
             range_key="range",
             team_id=team_id
