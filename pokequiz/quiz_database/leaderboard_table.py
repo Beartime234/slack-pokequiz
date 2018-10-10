@@ -28,8 +28,8 @@ class LeaderboardTable(BaseDynamoTable):
         """
         self.put_value(
             {
-                "quizId": self.quiz_id,
-                "teamRange": team_id
+                "id": self.quiz_id,
+                "range": team_id
             }
         )
         self._table_value = self.get_value(team_id)

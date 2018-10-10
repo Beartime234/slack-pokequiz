@@ -158,7 +158,7 @@ class Quiz(object):
         return {
             "fallback": question.get("question"),
             "pretext": question.get("question"),
-            "callback_id": question.get("questionRange"),
+            "callback_id": question.get("range"),
             "text": "",
             "attachment_type": "default",
             "fields": fields,

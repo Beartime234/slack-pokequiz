@@ -65,7 +65,7 @@ STAGE = os.environ["STAGE"]
 
 logger.debug(f"Loaded stage successfully. Stage: {STAGE}")
 
-QUIZ_STORAGE_TABLE = os.environ["QUIZ_QUESTION_TABLE"]
+QUIZ_STORAGE_TABLE = os.environ["QUIZ_STORAGE_TABLE"]
 
 logger.debug(f"Loaded table variables successfully."
              f" StorageTable: {QUIZ_STORAGE_TABLE}")
