@@ -39,7 +39,6 @@ def lambda_handler(api_event, api_context):
     # Build the slack client. This allows us make slack API calls
     # read up on the python-slack-client here. We get this from
     # AWS secrets manager. https://github.com/slackapi/python-slackclient
-    sc = SlackClient(SECRETS["BOT_TOKEN"])
 
     # Get the channel id
     channel_id = slack_payload_dict["channel"]["id"]
@@ -58,6 +57,8 @@ def lambda_handler(api_event, api_context):
 
     # Create the quiz object
     quiz = Quiz(QUIZ_ID, team_id)
+
+    sc = SlackClient(quiz.get_bot_token())
 
     # If the user interacted with the play_again action
     if callback_id == "play_again":

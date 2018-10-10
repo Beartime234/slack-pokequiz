@@ -4,13 +4,14 @@ from boto3 import Session
 from pokequiz.quiz_database.base_dynamo_table import BaseDynamoTable
 from pokequiz.quiz_database.exceptions import CouldNotFindValue
 
-
 logger = logging.getLogger(__name__)
 
 
-class LeaderboardTable(BaseDynamoTable):
-    """Leaderboard Table Class for performing actions to the leaderboard database
+class InfoTable(BaseDynamoTable):
+    """Info Table Class for performing actions to the leaderboard database and storing information regarding the team
+    e.g. Bot Oauth Tokens
     """
+
     def __init__(self, boto_session: Session, table_name: str, quiz_id: str, primary_key: str, range_key: str,
                  team_id: str):
         super().__init__(boto_session, table_name, quiz_id, primary_key, range_key)
@@ -19,6 +20,21 @@ class LeaderboardTable(BaseDynamoTable):
             self._table_value = self.get_value(team_id)
         except CouldNotFindValue:
             self.initialize_new_team(team_id)
+
+    def save_oauth_info(self, bot_info, team_name, access_token):
+        self._table_value["bot_info"] = bot_info
+        self._table_value["team_name"] = team_name
+        self._table_value["access_token"] = access_token
+        self.put_value(self._table_value)
+
+    def get_bot_token(self):
+        return self._table_value["bot_info"]["bot_access_token"]
+
+    def get_team_name(self):
+        return self._table_value["team_name"]
+
+    def get_access_toke(self):
+        return self._table_value["access_token"]
 
     def initialize_new_team(self, team_id: str):
         """Initializes a new team if they have never had a value before

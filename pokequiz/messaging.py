@@ -159,3 +159,4 @@ def send_oauth_response(slack_client, client_id, client_secret, auth_code):
     )
 
     logger.info(f"Successfully Sent Oauth Code. Response: {auth_response}")
+    return auth_response

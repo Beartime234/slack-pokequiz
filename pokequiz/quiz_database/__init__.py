@@ -1,2 +1,2 @@
 from .quiz_question_table import QuizQuestionTable
-from .leaderboard_table import LeaderboardTable
+from .info_table import InfoTable

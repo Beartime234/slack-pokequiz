@@ -10,8 +10,7 @@ export PYTHONPATH=pokequiz
 # Env variables
 export SECRETS_NAME=${SECRETS_NAME}  # The name of secrets
 export STAGE="local-dev"
-export QUIZ_QUESTION_TABLE="dev-quiz-questions"  # The name of secrets
-export QUIZ_LEADERBOARD_TABLE="dev-quiz-leaderboard"
+export QUIZ_STORAGE_TABLE="dev-quizdata-storage"  # The name of the storage table
 export AWS_PROFILE=${AWS_PROFILE}
 export AWS_DEFAULT_REGION=${REGION}
 export QUIZ_ID="pokequiz"

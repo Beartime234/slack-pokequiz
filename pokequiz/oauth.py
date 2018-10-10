@@ -30,9 +30,17 @@ def lambda_handler(api_event, api_context):
     # Build the slack client. This allows us make slack API calls
     # read up on the python-slack-client here. We get this from
     # AWS secrets manager. https://github.com/slackapi/python-slackclient
-    sc = SlackClient(SECRETS["BOT_TOKEN"])
+    ouath_sc = SlackClient("")
 
-    messaging.send_oauth_response(sc, SECRETS["CLIENT_ID"], SECRETS["CLIENT_SECRET"], oauth_code)
+    oauth_response = messaging.send_oauth_response(ouath_sc, SECRETS["CLIENT_ID"], SECRETS["CLIENT_SECRET"], oauth_code)
+
+    bot_info = oauth_response["bot"]
+    team_id = oauth_response["team_id"]
+    team_name = oauth_response["team_name"]
+    access_token = oauth_response["access_token"]
+
+    quiz = Quiz(QUIZ_ID, team_id)
+    quiz.set_oauth_information(bot_info, team_name, access_token)
 
     logger.info("Returning successful response.")
     # Everything went fine return a good response.

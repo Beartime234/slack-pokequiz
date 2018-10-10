@@ -4,7 +4,7 @@ import boto3
 from operator import itemgetter
 
 from pokequiz.quiz import helpers
-from pokequiz.quiz_database import QuizQuestionTable, LeaderboardTable
+from pokequiz.quiz_database import QuizQuestionTable, InfoTable
 from pokequiz import QUIZ_STORAGE_TABLE
 
 logger = logging.getLogger(__name__)
@@ -61,7 +61,7 @@ class Quiz(object):
             range_key="range"
         )
 
-        self.leaderboard_table = LeaderboardTable(
+        self.info_table = InfoTable(
             boto_session=boto_session,
             table_name=QUIZ_STORAGE_TABLE,
             quiz_id=f"{quiz_id}-teaminfo",
@@ -78,6 +78,14 @@ class Quiz(object):
         """
         return self.quiz_question_table.get_random_value()
 
+    def get_bot_token(self):
+        return self.info_table.get_bot_token()
+
+    def set_oauth_information(self, bot_info, team_name, access_token):
+        """Sets Oauth Information in the database
+        """
+        self.info_table.save_oauth_info(bot_info, team_name, access_token)
+
     def get_leaderboard(self):
         """Gets the leaderboard values from the database
 
@@ -85,7 +93,7 @@ class Quiz(object):
             A dictionary if there is values and if there isn't it will return a specific string
         """
         try:
-            leaderboard = self.leaderboard_table.get_user_scores()
+            leaderboard = self.info_table.get_user_scores()
         except KeyError:
             return "Sorry doesn't Look like your team has answered any questions! Type @pokequiz quiz to start " \
                    "answering some questions!"
@@ -111,9 +119,9 @@ class Quiz(object):
 
         """
         if is_correct:
-            self.leaderboard_table.save_correct_answer(user_id, self.answer_values["correct"])
+            self.info_table.save_correct_answer(user_id, self.answer_values["correct"])
         else:
-            self.leaderboard_table.save_incorrect_answer(user_id, self.answer_values["incorrect"])
+            self.info_table.save_incorrect_answer(user_id, self.answer_values["incorrect"])
 
     def get_user_streak(self, user_id: str) -> int:
         """Gets a user specific streak
@@ -124,7 +132,7 @@ class Quiz(object):
         Returns:
             A integer of the users streak
         """
-        return self.leaderboard_table.get_user_streak(user_id)
+        return self.info_table.get_user_streak(user_id)
 
     def form_suggest_question_slack_attachment(self, question) -> dict:
         """Forms a slack attachment attachment
