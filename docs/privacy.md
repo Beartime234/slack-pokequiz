@@ -10,7 +10,7 @@ Privacy Policy
 
 Effective date: October 11, 2018
 
-PokeQuiz ("us", "we", or "our") operates the https://pokequiz.xyz website (the "Service").
+PokeQuiz ("us", "we", or "our") operates the https://pokequiz.xyz website or the PokeQuiz slack application (the "Service").
 
 This page informs you of our policies regarding the collection, use, and disclosure of personal data when you use our Service and the choices you have associated with that data. Our Privacy Policy for PokeQuiz is managed through Free Privacy Policy.
 
@@ -28,6 +28,7 @@ While using our Service, we may ask you to provide us with certain personally id
 
 Cookies and Usage Data
 Usage Data
+Slack Team Information
 
 We may also collect information how the Service is accessed and used ("Usage Data"). This Usage Data may include information such as your computer's Internet Protocol address (e.g. IP address), browser type, browser version, the pages of our Service that you visit, the time and date of your visit, the time spent on those pages, unique device identifiers and other diagnostic data.
 
@@ -39,6 +40,9 @@ Cookies are files with small amount of data which may include an anonymous uniqu
 
 You can instruct your browser to refuse all cookies or to indicate when a cookie is being sent. However, if you do not accept cookies, you may not be able to use some portions of our Service.
 
+The PokeQuiz slack application stores information relevant to your team such as TeamID and UserID's. No personally identifiable information is kept
+such as your email etc.
+
 Examples of Cookies we use:
 
 Session Cookies. We use Session Cookies to operate our Service.
@@ -49,7 +53,6 @@ Use of Data
 PokeQuiz uses the collected data for various purposes:
 
 To provide and maintain the Service
-To notify you about changes to our Service
 To allow you to participate in interactive features of our Service when you choose to do so
 To provide customer care and support
 To provide analysis or valuable information so that we can improve the Service
@@ -57,9 +60,9 @@ To monitor the usage of the Service
 To detect, prevent and address technical issues
 Transfer Of Data
 
-Your information, including Personal Data, may be transferred to — and maintained on — computers located outside of your state, province, country or other governmental jurisdiction where the data protection laws may differ than those from your jurisdiction.
+Your information, may be transferred to — and maintained on — computers located outside of your state, province, country or other governmental jurisdiction where the data protection laws may differ than those from your jurisdiction.
 
-If you are located outside New Zealand and choose to provide information to us, please note that we transfer the data, including Personal Data, to New Zealand and process it there.
+If you are located outside New Zealand and choose to provide information to us, please note that we transfer the data, including Personal Data, to New Zealand, Sydney and the United States and process it there.
 
 Your consent to this Privacy Policy followed by your submission of such information represents your agreement to that transfer.
 
@@ -108,13 +111,11 @@ Children's Privacy
 
 Our Service does not address anyone under the age of 18 ("Children").
 
-We do not knowingly collect personally identifiable information from anyone under the age of 18. If you are a parent or guardian and you are aware that your Children has provided us with Personal Data, please contact us. If we become aware that we have collected Personal Data from children without verification of parental consent, we take steps to remove that information from our servers.
+We do not collect personally identifiable information from anyone under the age of 18. If you are a parent or guardian and you are aware that your Children has provided us with Personal Data, please contact us. If we become aware that we have collected Personal Data from children without verification of parental consent, we take steps to remove that information from our servers.
 
 Changes To This Privacy Policy
 
 We may update our Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page.
-
-We will let you know via email and/or a prominent notice on our Service, prior to the change becoming effective and update the "effective date" at the top of this Privacy Policy.
 
 You are advised to review this Privacy Policy periodically for any changes. Changes to this Privacy Policy are effective when they are posted on this page.
 

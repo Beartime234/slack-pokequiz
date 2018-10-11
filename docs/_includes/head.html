@@ -3,6 +3,9 @@
   <title>{{ site.title }}</title>
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  {%- if site.slack.app_id -%}
+  <meta name="slack-app-id" content="{{ site.slack.app_id }}">
+  {%- endif -%}
   {%- seo -%}
   <link rel="stylesheet" href="{{ "/assets/main.css" | relative_url }}">
   {%- feed_meta -%}

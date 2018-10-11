@@ -6,9 +6,9 @@
 title: PokéQuiz
 email: beartimeworks@gmail.com
 description: >- # this means to ignore newlines until "baseurl:"
-  PokeQuiz is your Slack teams personal quiz bot for Pokemon!
-  PokeQuiz can ask you hundreds of questions and you can even submit your own on Github.
-  Compete with your teammates to find out who is the real Pokemon Master!
+  PokéQuiz is your Slack teams personal quiz bot for Pokémon!
+  PokéQuiz can ask you hundreds of questions and you can even submit your own on Github.
+  Compete with your team to find out who is the real Pokémon master!
 baseurl: "" # the subpath of the site
 url: "https://pokequiz.xyz" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: Beartime234
