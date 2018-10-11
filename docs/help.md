@@ -3,22 +3,19 @@ layout: page
 title: Help
 permalink: /help/
 ---
-
-
-## Inviting PokeQuiz
+### Inviting PokeQuiz
 
 Explain that you need to invite pokequiz to a channel
 
-## Starting a Quiz
+### Starting a Quiz
 
 Explain how to trigger a quiz
 
-## Answering a Question
+### Answering a Question
 
 Explain how to answer a question
 
-
-## Leaderba
+### Leaderboard
 
 Explain how tot show a leaderboard
 
