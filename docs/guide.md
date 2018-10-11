@@ -3,13 +3,18 @@ layout: page
 title: Guide
 permalink: /guide/
 ---
+
+Thanks for installing PokeQuiz! Below are the instructions for using PokeQuiz
+if you have any questions feel free to contact me at the support email
+below or raise an issue on Github!
+
 ### Inviting PokeQuiz
 
-Explain that you need to invite pokequiz to a channel
+After you install PokeQuiz
 
 ### Starting a Quiz
 
-Explain how to trigger a quiz
+After PokeQuiz is in your channel
 
 ### Answering a Question
 

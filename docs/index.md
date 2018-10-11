@@ -4,7 +4,7 @@ layout: home
 exclude_from_nav: true
 ---
 
-# PokeQuiz
+# {{ site.quiz_name }}
 
 {{site.description}}
 
