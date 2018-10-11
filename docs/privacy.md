@@ -1,12 +1,8 @@
 ---
 layout: page
-title: Privacy
+title: Privacy Policy
 permalink: /privacy/
 ---
-
-# Policy
-
-Privacy Policy
 
 Effective date: October 11, 2018
 
