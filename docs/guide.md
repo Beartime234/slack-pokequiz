@@ -1,7 +1,7 @@
 ---
 layout: page
-title: Help
-permalink: /help/
+title: Guide
+permalink: /guide/
 ---
 ### Inviting PokeQuiz
 
