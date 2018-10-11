@@ -3,6 +3,8 @@
 layout: home
 ---
 
+## PokeQuiz
+
 {{site.description}}
 
 For more information see <a class="page-link" href="{{ "/about" | relative_url }}">about</a>
