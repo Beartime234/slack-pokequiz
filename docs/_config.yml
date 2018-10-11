@@ -20,6 +20,7 @@ markdown: kramdown
 theme: minima
 
 slack:
+  bot_name: pokequiz
   client_id: 442508869797.446111894053
   app_id: AD439SA1K
 
