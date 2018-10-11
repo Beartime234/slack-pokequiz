@@ -1,6 +1,7 @@
 ---
 # See: https://jekyllrb.com/docs/themes/#overriding-theme-defaults
 layout: home
+exclude_from_nav: true
 ---
 
 # PokéQuiz
