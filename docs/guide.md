@@ -20,7 +20,7 @@ you wish to invite them. Click invite them and you will then be able to
 mention {{ site.bot_name}} Or you can open the sidebar of the channel and
 click invite more people.
 
-<img src="{{ "/assets/images/inviting_bot.png" | relative_url }}">
+<img style="width: 60%; height: 60%;" src="{{ "/assets/images/inviting_bot.png" | relative_url }}">
 
 ### Starting a Quiz
 
@@ -30,7 +30,7 @@ with the words quiz in it. For example you could say ```@{{ site.bot_name }}
 let's do a quiz``` or ```@{{ site.bot_name }} quiz time!```. After this
 your quiz will begin!
 
-<img src="{{ "/assets/images/starting_a_quiz.png" | relative_url }}">
+<img style="width: 50%; height: 50%;" src="{{ "/assets/images/starting_a_quiz.png" | relative_url }}">
 
 ### Answering a Question
 
@@ -38,7 +38,7 @@ Answering a question is very simple. All you need to do do is click the button w
 If you are correct or incorrect {{ site.bot_name }} will tell you and update the previous question with the incorrect and correct
 answers. You can then choose to play again and get another question if you like.
 
-<img src="{{ "/assets/images/answering_a_question.gif" | relative_url }}">
+<img style="width: 60%; height: 60%;" src="{{ "/assets/images/answering_a_question.gif" | relative_url }}">
 
 ### Leaderboard
 
@@ -48,7 +48,7 @@ To show th leaderboard this mention {{ site.bot_name }} with the word leaderboar
 For example you could say ```@{{ site.bot_name }} show me the leaderboard```.
 After this your channels leaderboard will be shown. Please note that this will mention each user on the leaderboard.
 
-<img src="{{ "/assets/images/leaderboard.png" | relative_url }}">
+<img style="width: 60%; height: 60%;" src="{{ "/assets/images/leaderboard.png" | relative_url }}">
 
 ## Streaks
 
@@ -57,4 +57,4 @@ Whenever you answer a question incorrectly this resets your streak and you
 will be informed of the streak you lost. You also get a special message whenever you
 reach a multiple of 10 or 100 of your streak.
 
-<img src="{{ "/assets/images/streaks.png" | relative_url }}">
+<img style="width: 60%; height: 60%;" src="{{ "/assets/images/streaks.png" | relative_url }}">
