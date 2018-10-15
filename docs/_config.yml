@@ -17,13 +17,16 @@ twitter_username: Beartime234
 github_username:  Beartime234
 linkedin_username: josh-eaton
 
+# Slack Settings
+slack:
+  client_id: 442508869797.446111894053
+  app_id: AD439SA1K
+
 # Build settings
 markdown: kramdown
 theme: minima
 
-slack:
-  client_id: 442508869797.446111894053
-  app_id: AD439SA1K
+
 
 # Exclude from processing.
 exclude:
