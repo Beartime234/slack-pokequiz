@@ -17,7 +17,7 @@ def form_response(status_code: int, body: dict = None, additional_headers: dict 
     """Generates a JSON response
 
     Args:
-        additional_headers: Any additionaal headers you wish to add
+        additional_headers: Any additional headers you wish to add
         status_code (int): A integer of the applicable status code
         body (dict): A dictionary to send as a response.
 
@@ -155,10 +155,13 @@ def replace_streak(replace_string: str, streak):
 def replace_values(replace_string, user_id=None, streak=None):
     """Main controller for replacing values in the configuration file
 
+    This assumes that you know whats coming in. You need to know if a user_id or streak
+    will be in the string you are sending it and if so send it as a parameter and it will replace it
+
     Args:
-        streak:
+        streak: The streak if you are going to be replacing the streak. Replaces ${streak}
         replace_string: The string you are looking for replacements in
-        user_id:
+        user_id: The user id that if you think you are going to be replacing it. Replaces ${user_id}
 
     Returns:
 

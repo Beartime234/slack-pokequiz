@@ -214,7 +214,7 @@ class Quiz(object):
         return attachment
 
     def form_leaderboard_text(self, leaderboard: dict):
-        """From a leaderboard mapping forms the leaderboard text to send to slack
+        """Form a leaderboard mapping forms the leaderboard text to send to slack
 
         Args:
             leaderboard: The leaderboard dictionary should be returned by
