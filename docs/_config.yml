@@ -19,8 +19,8 @@ linkedin_username: josh-eaton
 
 # Slack Settings
 slack:
-  client_id: 442508869797.446111894053
-  app_id: AD439SA1K
+  client_id: "442508869797.446111894053"
+  app_id: "AD439SA1K"
 
 # Build settings
 markdown: kramdown
