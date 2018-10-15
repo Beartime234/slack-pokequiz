@@ -1,8 +1,8 @@
 import logging
 from boto3 import Session
 
-from pokequiz.quiz_database.base_dynamo_table import BaseDynamoTable
-from pokequiz.quiz_database.exceptions import CouldNotFindValue
+from pokequiz.database.base_table import BaseDynamoTable
+from pokequiz.database.exceptions import CouldNotFindValue
 
 logger = logging.getLogger(__name__)
 

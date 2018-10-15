@@ -1,0 +1,46 @@
+---
+quiz:
+  cosmetic:
+    color:
+      orange: "#FFA500"
+      red: "#E50000"
+      green: "#32cd32"
+    emoji:
+      correct: ":white_check_mark:"
+      incorrect: ":x:"
+    button_styles:
+      default: "default"
+      green: "primary"
+      red: "danger"
+  text:
+    play_again: "Would you like to play again?"
+    leaderboard:
+      header: "*Pokemon Masters*"
+      no_answered_questions: "Sorry doesn't Look like your team has answered any questions!"
+  values:
+    leaderboard:
+      max_users: 10
+    answer_values:
+      correct: 1
+      incorrect: -1
+messaging:
+  intro_message: |
+    Okay trainer, let's catch them all! :smiley:
+  unknown_command: |
+    Sorry ${user_id} I didn't quite get that. If you want to start a quiz say
+    something with quiz and start in it :grin: e.g. @pokequiz let's start a quiz!
+  correct:
+    streak:
+      greater_ten: |
+        Nice one ${user_id} that's your ${streak}th correct answer in a row! :astonished:
+      greater_hundred: |
+        :tada: :tada: :tada: WOW ${user_id} that's your ${streak}th correct answer in a row!
+        :tada: :tada: Congratulations you truly are a Pokemon master! :tada:
+      no_streak: |
+        Nice one ${user_id} that's correct! :tada:
+  incorrect:
+    streak:
+      greater_ten: |
+        Sorry ${user_id} that's incorrect! :disappointed_relieved: You lost a ${streak} streak.
+      no_streak: |
+        Sorry ${user_id} that's incorrect! :disappointed_relieved:

@@ -13,7 +13,7 @@ logger = logging.getLogger(__name__)
 SLACK_URL = "https://slack.com/api/chat.postMessage"
 
 
-def form_response(status_code: int, body: dict = None, additional_headers: dict=None):
+def form_response(status_code: int, body: dict = None, additional_headers: dict = None):
     """Generates a JSON response
 
     Args:
@@ -118,7 +118,7 @@ def verify_request(request_headers: dict, slack_event_body: str, app_signing_sec
     slack_timestamp = request_headers["X-Slack-Request-Timestamp"]
     # Is the request older then 5 minutes
     if abs(time.time() - float(slack_timestamp)) > 60 * 5:
-        logger.warning(f"Request verification failed. Timestamp was over 5 mins old for the request")
+        logger.warning(f"Request verification failed. Timestamp was over 5 min's old for the request")
         return False
 
     # Does the hash that we create match the hash that slack has sent?
@@ -134,3 +134,41 @@ def verify_request(request_headers: dict, slack_event_body: str, app_signing_sec
     else:
         logger.warning(f"Verification failed. my_signature: {my_signature} slack_signature: {slack_signature}")
         return False
+
+
+def replace_user_id(replace_string: str, user_id):
+    """Replaces text in a string with user id. String must be ${user_id}
+    """
+    slack_appropriate_user_id = f"<@{user_id}>"
+    return replace_string.replace("${user_id}", slack_appropriate_user_id)
+
+
+def replace_streak(replace_string: str, streak):
+    """Replaces text in a string with streak. String must be ${streak}
+
+    Also converts streak it to a string
+    """
+    streak = str(streak)
+    print(f"REPLACE STRING = {replace_string}")
+    print(f"STREAK = {streak}")
+    final_string = replace_string.replace("${streak}", streak)
+    print(f"FINAL STRING = {final_string}")
+    return final_string
+
+
+def replace_values(replace_string, user_id=None, streak=None):
+    """Main controller for replacing values in the configuration file
+
+    Args:
+        streak:
+        replace_string: The string you are looking for replacements in
+        user_id:
+
+    Returns:
+
+    """
+    if user_id is not None:
+        replace_string = replace_user_id(replace_string, user_id)
+    if streak is not None:
+        replace_string = replace_streak(replace_string, streak)
+    return replace_string

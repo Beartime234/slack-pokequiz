@@ -12,22 +12,30 @@ import logging.config
 import yaml
 
 __version__ = "0.1"
+config_dir_name = "config"
+LOGGING_CONFIG_FILENAME = "logging.yml"
+APP_CONFIG_FILENAME = "app.yml"
 
 # Gets the real path of this location just so we can
 dir_path = os.path.dirname(os.path.realpath(__file__))
 
 # Read the logging configuration and set it
-with open(f"{dir_path}/quiz_config/logging.yml", "rt") as f:
-    config = yaml.safe_load(f.read())
+with open(f"{dir_path}/{config_dir_name}/{LOGGING_CONFIG_FILENAME}", "rt") as f:
+    app_config = yaml.safe_load(f.read())
     f.close()
 
-logging.config.dictConfig(config)
+logging.config.dictConfig(app_config)
 logger = logging.getLogger(__name__)
 
 # Ignore non important logs from botocore and boto3 cause they noisy as hell
 logging.getLogger('botocore').setLevel(logging.CRITICAL)
 logging.getLogger('boto3').setLevel(logging.CRITICAL)
 logging.getLogger('urllib3').setLevel(logging.CRITICAL)
+
+# Read the application config
+with open(f"{dir_path}/{config_dir_name}/{APP_CONFIG_FILENAME}", "rt") as f:
+    app_config = yaml.safe_load(f.read())
+    f.close()
 
 logger.info(f"Starting up Quiz v{__version__}")
 logger.debug("Starting initialization. Loading secrets and environment variables.")
@@ -36,7 +44,12 @@ logger.debug("Starting initialization. Loading secrets and environment variables
 # This is declared globally because as this is useful for all parts of the function
 start_time = time.time()
 
+# Get the QUIZ_ID and load the configuration for it
 QUIZ_ID = os.environ["QUIZ_ID"]
+
+# Get the Quiz Config
+QUIZ_CONFIG = app_config["quiz"]
+MESSAGING_CONFIG = app_config["messaging"]
 
 # Grab secrets for the application.
 SECRETS_NAME = os.environ["SECRETS_NAME"]
@@ -57,6 +70,9 @@ SECRETS = json.loads(secret_value)
 # Check its a dictionary if it's not its probably an error
 if type(SECRETS) is not dict:
     raise TypeError("Secrets must be a well formed dictionary.")
+
+if SECRETS is None:
+    raise TypeError("Secrets should not be None")
 
 logger.debug(f"Loaded secrets successfully. Secrets: {SECRETS}.")
 

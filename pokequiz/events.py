@@ -110,7 +110,7 @@ def lambda_handler(api_event, api_context):
             messaging.send_unknown_command_response(
                 slack_client=sc,
                 channel_id=channel_id,
-                user_id=user_id
+                user_id=user_id,
             )
 
     logger.info("Returning successful response.")

@@ -4,7 +4,7 @@ from botocore.exceptions import ClientError
 import logging
 from sys import exit
 
-from pokequiz.quiz_database.exceptions import CouldNotFindValue
+from pokequiz.database.exceptions import CouldNotFindValue
 
 logger = logging.getLogger(__name__)
 

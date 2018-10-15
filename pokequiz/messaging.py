@@ -1,6 +1,8 @@
 import logging
 
 from pokequiz.exceptions import FailedSlackApiCall
+from pokequiz import MESSAGING_CONFIG
+from pokequiz.helpers import replace_values
 
 logger = logging.getLogger(__name__)
 
@@ -13,12 +15,10 @@ def check_slack_response(slack_api_response):
 def send_intro_message(slack_client, channel_id):
     logger.info("Sending intro message")
 
-    quiz_start_message = f"Okay trainer, let's catch them all! :smiley:"
-
     intro_message_response = slack_client.api_call(
         "chat.postMessage",
         channel=channel_id,
-        text=quiz_start_message
+        text=replace_values(MESSAGING_CONFIG["intro_message"])
     )
 
     check_slack_response(intro_message_response)
@@ -42,13 +42,10 @@ def send_question(slack_client, channel_id, question_attachment):
 def send_unknown_command_response(slack_client, channel_id, user_id):
     logger.info("Unknown command so sending ephemeral message")
 
-    unknown_command_message = f"Sorry <@{user_id}> I didn't quite get that. If you want to start a quiz say " \
-                              f"something with quiz and start in it :grin: e.g. @pokequiz let's start a quiz!"
-
     unknown_command_response = slack_client.api_call(
         "chat.postEphemeral",
         channel=channel_id,
-        text=unknown_command_message,
+        text=replace_values(MESSAGING_CONFIG["unknown_command"], user_id),
         user=user_id
     )
 
@@ -101,17 +98,16 @@ def send_answered_question(slack_client, channel_id, user_id, correct, streak):
 
     if not correct:
         if streak >= 10:  # if they got it wrong but there streak was over 10 tell them how much they lost
-            reply_text = f"Sorry <@{user_id}> that's incorrect! :disappointed_relieved: You lost a {streak} streak."
+            reply_text = replace_values(MESSAGING_CONFIG["incorrect"]["streak"]["greater_ten"], user_id, streak)
         else:
-            reply_text = f"Sorry <@{user_id}> that's incorrect! :disappointed_relieved:"
+            reply_text = replace_values(MESSAGING_CONFIG["incorrect"]["streak"]["no_streak"], user_id)
     else:
         if streak % 100 == 0:  # If this is the users 100th correct in a row
-            reply_text = f":tada: :tada: :tada: WOW <@{user_id}> that's your {streak}th correct answer in a row! " \
-                         f":tada: :tada: Congratulations you truly are a Pokemon master! :tada: "
+            reply_text = replace_values(MESSAGING_CONFIG["correct"]["streak"]["greater_hundred"], user_id, streak)
         elif streak % 10 == 0:  # If this is the users 10th, 20th correct answer in a row
-            reply_text = f"Nice one <@{user_id}> that's your {streak}th correct answer in a row! :astonished:"
+            reply_text = replace_values(MESSAGING_CONFIG["correct"]["streak"]["greater_ten"], user_id, streak)
         else:
-            reply_text = f"Nice one <@{user_id}> that's correct! :tada:"
+            reply_text = replace_values(MESSAGING_CONFIG["correct"]["streak"]["no_streak"], user_id)
 
     answer_response = slack_client.api_call(
         "chat.postMessage",
