@@ -148,12 +148,8 @@ def replace_streak(replace_string: str, streak):
 
     Also converts streak it to a string
     """
-    streak = str(streak)
-    print(f"REPLACE STRING = {replace_string}")
-    print(f"STREAK = {streak}")
-    final_string = replace_string.replace("${streak}", streak)
-    print(f"FINAL STRING = {final_string}")
-    return final_string
+    streak = str(streak)  # Turn it into a string because yuck its a Decimal when it comes form YAML
+    return replace_string.replace("${streak}", streak)
 
 
 def replace_values(replace_string, user_id=None, streak=None):
