@@ -8,7 +8,7 @@ exclude_from_nav: true
 
 {{site.description}}
 
-For more information see <a class="page-link" href="{{ "/about" | relative_url }}">about</a> <a class="page-link" href="{{ "/about" | relative_url }}">about</a>
+For more information see <a class="page-link" href="{{ "/about" | relative_url }}">about</a>
 
 <br/>
 {%- if site.slack.client_id -%}

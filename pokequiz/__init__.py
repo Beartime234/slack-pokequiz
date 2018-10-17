@@ -50,6 +50,7 @@ QUIZ_ID = os.environ["QUIZ_ID"]
 # Get the Quiz Config
 QUIZ_CONFIG = app_config["quiz"]
 MESSAGING_CONFIG = app_config["messaging"]
+OAUTH_CONFIG = app_config["oauth"]
 
 # Grab secrets for the application.
 SECRETS_NAME = os.environ["SECRETS_NAME"]

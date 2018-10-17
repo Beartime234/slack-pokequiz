@@ -73,6 +73,7 @@ def lambda_handler(api_event, api_context):
         # The string values that must be in the user requested message to start the quiz or show leaderboard
         quiz_trigger_strings = ["quiz"]
         leaderboard_trigger_strings = ["leaderboard"]
+        help_trigger_strings = ["help"]
 
         # This checks if the quiz start strings
         if all(x in user_text for x in quiz_trigger_strings):
@@ -104,7 +105,13 @@ def lambda_handler(api_event, api_context):
                 channel_id=channel_id,
                 leaderboard=leaderboard_text
             )
-
+        elif all(x in user_text for x in help_trigger_strings):
+            # Send the help message specified in the app config
+            messaging.send_help_message(
+                slack_client=sc,
+                channel_id=channel_id,
+                user_id=user_id
+            )
         else:
             # Send a message saying we couldn't understand what they are trying to trigger
             messaging.send_unknown_command_response(

@@ -16,7 +16,9 @@ quiz:
     play_again: "Would you like to play again?"
     leaderboard:
       header: "*Pokemon Masters*"
-      no_answered_questions: "Sorry doesn't Look like your team has answered any questions!"
+      no_answered_questions: |
+        Sorry doesn't Look like your team has answered any questions. Say @pokequiz let's start a quiz to get answering
+        some questions!
   values:
     leaderboard:
       max_users: 10
@@ -28,7 +30,13 @@ messaging:
     Okay trainer, let's catch them all! :smiley:
   unknown_command: |
     Sorry ${user_id} I didn't quite get that. If you want to start a quiz say
-    something with quiz and start in it :grin: e.g. @pokequiz let's start a quiz!
+    something with quiz in it :grin: e.g. @pokequiz let's start a quiz! Also mention me with the word help
+    to view some instructions.
+  help_command: |
+    Hey ${user_id} :grin: you can mention me along with the word *quiz* to start a quiz e.g. @pokequiz let's start
+    a quiz! You can also mention me along with the word *leaderboard* to view your teams leaderboard e.g. @pokequiz
+    show me the leaderbaord! You can mention me along with the word *help* to view this message e.g. @pokequiz help me!
+    For more information you can view the guide here https://pokequiz.xyz/guide
   correct:
     streak:
       greater_ten: |
@@ -44,3 +52,5 @@ messaging:
         Sorry ${user_id} that's incorrect! :disappointed_relieved: You lost a ${streak} streak.
       no_streak: |
         Sorry ${user_id} that's incorrect! :disappointed_relieved:
+oauth:
+  redirect_success: "https://pokequiz.xyz/thanks"

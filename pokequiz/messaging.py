@@ -144,6 +144,18 @@ def send_leaderboard(slack_client, channel_id, leaderboard):
     logger.debug(f"Leaderboard sent. Response: {send_leaderboard_response}")
 
 
+def send_help_message(slack_client, channel_id, user_id):
+    logger.info("Sending help message.")
+
+    send_help_response = slack_client.api_call(
+        "chat.postMessage",
+        channel=channel_id,
+        text=replace_values(MESSAGING_CONFIG["help_command"], user_id)
+    )
+
+    logger.debug(f"Help message sent. Response: {send_help_response}")
+
+
 def send_oauth_response(slack_client, client_id, client_secret, auth_code):
     logger.info("Sending oauth response")
 

@@ -8,7 +8,7 @@ import json
 from slackclient import SlackClient
 
 # Local imports
-from pokequiz import helpers, messaging, SECRETS, QUIZ_ID
+from pokequiz import helpers, messaging, SECRETS, QUIZ_ID, OAUTH_CONFIG
 
 # Import the quiz
 from pokequiz.quiz import Quiz
@@ -44,4 +44,5 @@ def lambda_handler(api_event, api_context):
 
     logger.info("Returning successful response.")
     # Everything went fine return a good response.
-    return helpers.form_response(301, {"message": "Auth Successful"}, additional_headers={"Location": "https://pokequiz.xyz"})
+    return helpers.form_response(301, {"message": "Auth Successful"},
+                                 additional_headers={"Location": OAUTH_CONFIG["redirect_success"]})
