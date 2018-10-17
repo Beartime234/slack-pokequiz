@@ -54,3 +54,11 @@ messaging:
         Sorry ${user_id} that's incorrect! :disappointed_relieved:
 oauth:
   redirect_success: "https://pokequiz.xyz/thanks"
+events:
+  trigger_words:
+    quiz_start:
+      - quiz
+    leaderboard_show:
+      - leaderboard
+    help_show:
+      - help

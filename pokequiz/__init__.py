@@ -1,7 +1,8 @@
 """Initializes Pokequiz and gets all the information it needs to run.
 
-This probably shouldn't be in __init__ but because the application shares helpers and creates 2 lambda functions
-from the same package this seems like the easiest method. Should probably be reworked into 2 different SRC folders.
+This probably shouldn't be in __init__ but because the application shares helpers and creates 3 lambda functions
+from the same package this seems like the easiest method. Should probably be reworked into 3 different SRC folders.
+Honestly thought this makes it a lot easier to do everything.
 """
 
 import time
@@ -51,6 +52,7 @@ QUIZ_ID = os.environ["QUIZ_ID"]
 QUIZ_CONFIG = app_config["quiz"]
 MESSAGING_CONFIG = app_config["messaging"]
 OAUTH_CONFIG = app_config["oauth"]
+EVENTS_CONFIG = app_config["events"]
 
 # Grab secrets for the application.
 SECRETS_NAME = os.environ["SECRETS_NAME"]

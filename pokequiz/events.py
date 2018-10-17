@@ -8,7 +8,7 @@ import json
 from slackclient import SlackClient
 
 # Local imports
-from pokequiz import helpers, messaging, SECRETS, QUIZ_ID
+from pokequiz import helpers, messaging, SECRETS, QUIZ_ID, EVENTS_CONFIG
 
 # Import the quiz
 from pokequiz.quiz import Quiz
@@ -71,12 +71,12 @@ def lambda_handler(api_event, api_context):
         channel_id = slack_event_dict["channel"]
 
         # The string values that must be in the user requested message to start the quiz or show leaderboard
-        quiz_trigger_strings = ["quiz"]
-        leaderboard_trigger_strings = ["leaderboard"]
-        help_trigger_strings = ["help"]
+        quiz_trigger_strings = EVENTS_CONFIG["trigger_words"]["quiz_start"]
+        leaderboard_trigger_strings = EVENTS_CONFIG["trigger_words"]["leaderboard_show"]
+        help_trigger_strings = EVENTS_CONFIG["trigger_words"]["help_show"]
 
         # This checks if the quiz start strings
-        if all(x in user_text for x in quiz_trigger_strings):
+        if any(x in user_text for x in quiz_trigger_strings):
 
             question = quiz.get_random_quiz_question()
 
@@ -94,7 +94,7 @@ def lambda_handler(api_event, api_context):
             )
             quiz.update_user_score(user_id, True)
 
-        elif all(x in user_text for x in leaderboard_trigger_strings):
+        elif any(x in user_text for x in leaderboard_trigger_strings):
             quiz = Quiz(QUIZ_ID, team_id)
 
             leaderboard: dict = quiz.get_leaderboard()
@@ -105,7 +105,7 @@ def lambda_handler(api_event, api_context):
                 channel_id=channel_id,
                 leaderboard=leaderboard_text
             )
-        elif all(x in user_text for x in help_trigger_strings):
+        elif any(x in user_text for x in help_trigger_strings):
             # Send the help message specified in the app config
             messaging.send_help_message(
                 slack_client=sc,
