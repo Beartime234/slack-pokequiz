@@ -8,9 +8,10 @@ permalink: /about/
 
 {{ site.description }}
 
-You can use {{ site.quiz_name }} to have a live Quiz battle with your team directly in slack.
+You can use {{ site.quiz_name }} to have a live quiz battle with your team directly in slack.
 Interact with the buttons of {{ site.quiz_name }} to submit your answers and compete with your
-teammates on the leaderboard. For information on how to use {{ site.quiz_name }} view the
+teammates on the team leaderboard. Keep a streak of correct answers to show off to your teammates your Pokemon skill.
+For information on how to use {{ site.quiz_name }} view the
 <a class="page-link" href="{{ "/guide" | relative_url }}">guide</a>.
 
 ## Submitting Questions

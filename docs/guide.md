@@ -22,12 +22,22 @@ click invite more people.
 
 <img style="width: 60%; height: 60%;" src="{{ "/assets/images/inviting_bot.png" | relative_url }}">
 
+### Help
+
+After {{ site.bot_name }} has been invited to a channel you can ask for
+some help just by mentioning {{ site.bot_name }} along with the word help.
+For example you could say ```@{{ site.bot_name }} help me!```. {{ site.bot_name }}
+will then give you some simple instructions. This may save you some time instead
+of having to continuously visit this page.
+
+<img style="width: 130%; height: 130%;" src="{{ "/assets/images/help.png" | relative_url }}">
+
 ### Starting a Quiz
 
 After {{ site.bot_name }} has been invited to a channel you can start your
 first quiz. To initiate a quiz with {{ site.bot_name }} just mention the bot
 with the words quiz in it. For example you could say ```@{{ site.bot_name }}
-let's do a quiz``` or ```@{{ site.bot_name }} quiz time!```. After this
+quiz time``` or ```@{{ site.bot_name }} let's do a quiz!```. After this
 your quiz will begin!
 
 <img style="width: 50%; height: 50%;" src="{{ "/assets/images/starting_a_quiz.png" | relative_url }}">
