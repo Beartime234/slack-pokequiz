@@ -8,7 +8,8 @@ exclude_from_nav: true
 
 {{site.description}}
 
-For more information see <a class="page-link" href="{{ "/about" | relative_url }}">about</a>
+For information about {{ site.quiz_name }} see <a class="page-link" href="{{ "/about" | relative_url }}">about</a> page
+For information on how to use {{ site.quiz_name }} see the <a class="page-link" href="{{ "/guide" | relative_url }}">guide</a> page
 
 <br/>
 {%- if site.slack.client_id -%}
