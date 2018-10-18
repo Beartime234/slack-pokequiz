@@ -8,11 +8,16 @@ permalink: /about/
 
 {{ site.description }}
 
+You can use {{ site.quiz_name }} to have a live Quiz battle with your team directly in slack.
+Interact with the buttons of {{ site.quiz_name }} to submit your answers and compete with your
+teammates on the leaderboard. For information on how to use {{ site.quiz_name }} view the
+<a class="page-link" href="{{ "/guide" | relative_url }}">guide</a>.
+
 ## Submitting Questions
 
 Think my questions suck? Why don't you submit your own! You can submit
 your own questions by visiting the [slack-quizdata](https://github.com/Beartime234/slack-quizdata) github repo and raising
-a pull request. There are instructions on how to a do this in that repository under docs/.
+a pull request. There are instructions on how to a do this in that repository under docs.
 
 ## {{ site.quiz_name }} Open Source
 
@@ -24,8 +29,8 @@ ASAP. When I do I will update this.
 ## Pokemon Trademarks
 
 I do not own any Pokemon Trademarks and this is purely a fan project with no intention of
-monetary gain. I only do this because I love Pokemon :) Any questions please
-contact me.
+monetary gain. I only do this because I love Pokemon. Any questions please
+contact me. Below are The Pokemon Companies trademarks.
 
 © 2018 Pokémon. © 1995–2018 Nintendo/Creatures Inc./GAME FREAK inc. Pokémon,
 Pokémon character names, Nintendo 3DS, Nintendo DS, Wii, Wii U, and Wiiware are
