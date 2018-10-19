@@ -5,8 +5,8 @@ permalink: /guide/
 ---
 
 Thanks for installing {{ site.quiz_name }}! Below are the instructions for using PokeQuiz
-if you have any questions feel free to contact me via the support email
-located on the footer or raise an issue on Github!
+if you have any questions or experience any issues
+feel free to contact me via the support email <a href="mailto:{{site.email}}">{{ site.email }}</a>
 
 ### Inviting PokeQuiz
 

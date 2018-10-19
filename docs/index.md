@@ -4,11 +4,11 @@ layout: home
 exclude_from_nav: true
 ---
 
-# {{ site.quiz_name }}
+# PokeQuiz
 
 {{site.description}}
 
-For information about {{ site.quiz_name }} see <a class="page-link" href="{{ "/about" | relative_url }}">about</a>
+For information about {{ site.quiz_name }} see <a class="page-link" href="{{ "/about" | relative_url }}">about</a><br/>
 For information on how to use {{ site.quiz_name }} see the <a class="page-link" href="{{ "/guide" | relative_url }}">guide</a>
 
 <br/>

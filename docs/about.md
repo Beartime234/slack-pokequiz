@@ -52,3 +52,7 @@ for material or ideas or any other right, including the right to approve the way
 is used. In no uncertain terms, does Pokémon's use of Fan Art constitute a
 grant to Fan Art's creator to use the Pokémon intellectual property or Fan Art
 beyond a personal, noncommercial home use.
+
+## Slack Affiliation
+
+{{ site.bot_name }} is not created by, affiliated with, or supported by Slack Technologies, Inc.
