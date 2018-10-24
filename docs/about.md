@@ -16,6 +16,8 @@ For information on how to use {{ site.quiz_name }} view the
 
 ## Submitting Questions
 
+> Sorry this is unreleased as of right now but will be released soon! If you want send me an email with your questions and i will add them
+
 Think my questions suck? Why don't you submit your own! You can submit
 your own questions by visiting the [slack-quizdata](https://github.com/Beartime234/slack-quizdata) github repo and raising
 a pull request. There are instructions on how to a do this in that repository under docs.
