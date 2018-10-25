@@ -1,4 +1,5 @@
 import logging
+import random
 from uuid import uuid4
 from boto3 import Session
 from boto3.dynamodb.conditions import Key
@@ -29,21 +30,22 @@ class QuizQuestionTable(BaseDynamoTable):
         # By limiting it to 1 we create a way to randomly query a dynamo db table
         comparing_uuid = str(uuid4())
 
-        # First check if the uuid is greater then any in the table
+        # First check if the uuid is greater then any in the table. Will actually return 3 responses and pick a
+        # random value from there. This is to create more variation in question otherwise there will be gaps
+        # frequently. In the way uuids are compared. This theoretically only will use 1 read capacity
         get_value_gt_response = self._dynamo_db_table.query(
-            KeyConditionExpression=Key(self.primary_key).eq(self.quiz_id) &
-                                   Key(self.range_key).gt(comparing_uuid),
-            Limit=1
+            KeyConditionExpression=Key(self.primary_key).eq(self.quiz_id) & Key(self.range_key).gt(comparing_uuid),
+            Limit=5
         )
 
         # If there is a response return it
         if len(get_value_gt_response["Items"]) > 0:
-            return get_value_gt_response["Items"][0]
+            return random.choice(get_value_gt_response["Items"])  # This is so questions that have a similar id still
+            #  have a chance and increases randomness
 
         # If not then something has to be lower then it otherwise there wont be any in the table
         get_value_lt_response = self._dynamo_db_table.query(
-            KeyConditionExpression=Key(self.primary_key).eq(self.quiz_id) &
-                                   Key(self.range_key).lt(comparing_uuid),
+            KeyConditionExpression=Key(self.primary_key).eq(self.quiz_id) & Key(self.range_key).lt(comparing_uuid),
             Limit=1
         )
 
