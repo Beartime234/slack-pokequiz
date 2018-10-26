@@ -11,9 +11,9 @@ feel free to contact me via the support email <a href="mailto:{{site.email}}">{{
 ### Inviting PokeQuiz
 
 After you install {{ site.quiz_name }} a bot named {{ site.bot_name }} will
-be added to the channel. By mentioning the bot you can trigger quiz based
-commands. To mention the bot just type @{{ site.bot_name }}. Before you can
-mention {{ site.bot_name }} you will need to invite the bot to your channel.
+be added to the workspace. By mentioning the bot or messaging the app directly
+you can trigger quiz based commands. To mention the bot just type @{{ site.bot_name }}.
+Before you can mention {{ site.bot_name }} you will need to invite the bot to your channel.
 You can invite {{ site.bot_name }} through two methods. The first method is
 mentioning {{ site.bot_name }} and then slackbot if enabled will as you if
 you wish to invite them. Click invite them and you will then be able to
