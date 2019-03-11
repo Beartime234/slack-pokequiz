@@ -20,7 +20,7 @@ you wish to invite them. Click invite them and you will then be able to
 mention {{ site.bot_name}} Or you can open the sidebar of the channel and
 click invite more people.
 
-<img style="width: 60%; height: 60%;" src="{{ "/assets/images/inviting_bot.png" | relative_url }}">
+<img style="width: 60%; height: 60%;" srclou="{{ "/assets/images/inviting_bot.png" | relative_url }}">
 
 ### Help
 
